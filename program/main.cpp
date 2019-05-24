@@ -4,6 +4,7 @@
 #include <chrono>
 
 #include "QC.h"
+#include "QM3.h"
 #include "generator.h"
 
 #define N_TESTES 25
@@ -32,8 +33,9 @@ int* geraVetor(char* tipo, int tamanho){
 void fazOrdenacao(char* variacao, int* vetor, int tamanho, int& n_comp, int& n_mov){
     if (stringIgual(variacao, (char*)"QC"))
         qc(vetor, tamanho, n_comp, n_mov);
-    /*
-    else if (stringIgual(variacao,"QM3")){}
+    else if (stringIgual(variacao,(char*)"QM3")){
+        qm3(vetor, tamanho, n_comp, n_mov);
+    }/*
     else if (stringIgual(variacao,"QPE")){}
     else if (stringIgual(variacao,"QI1")){}
     else if (stringIgual(variacao,"QI5")){}
@@ -96,7 +98,7 @@ int main(int argc, char* argv[]){
     
     printf("%s %s %i",variacao, tipo, tamanho);
     printf(" %i",mediana(n_comp_vec, N_TESTES));
-    printf(" %i",mediana(n_mov_vec, N_TESTES));
+    printf(" %i\n",mediana(n_mov_vec, N_TESTES));
         
     if (imprimir == true){
         for (int j = 0; j < N_TESTES; j++){
