@@ -5,6 +5,7 @@
 
 #include "QC.h"
 #include "QM3.h"
+#include "QPE.h"
 #include "generator.h"
 
 #define N_TESTES 25
@@ -33,10 +34,11 @@ int* geraVetor(char* tipo, int tamanho){
 void fazOrdenacao(char* variacao, int* vetor, int tamanho, int& n_comp, int& n_mov){
     if (stringIgual(variacao, (char*)"QC"))
         qc(vetor, tamanho, n_comp, n_mov);
-    else if (stringIgual(variacao,(char*)"QM3")){
+    else if (stringIgual(variacao,(char*)"QM3"))
         qm3(vetor, tamanho, n_comp, n_mov);
-    }/*
-    else if (stringIgual(variacao,"QPE")){}
+    else if (stringIgual(variacao,(char*)"QPE"))
+        qpe(vetor, tamanho, n_comp, n_mov);
+    /*
     else if (stringIgual(variacao,"QI1")){}
     else if (stringIgual(variacao,"QI5")){}
     else if (stringIgual(variacao,"QI10")){}
