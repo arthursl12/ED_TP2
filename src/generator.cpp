@@ -19,9 +19,9 @@ int* VetorAleatorio(int tamanho){
         throw std::invalid_argument("Tamanho inválido");
 
     int tam = tamanho;
-    srand(time(NULL));
     int* vec = new int[tam];
     for (int i = 0; i < tam; i++){
+        srand(time(NULL));
         vec[i] = rand();
     }
     return vec;
