@@ -11,7 +11,7 @@ T_CFLAGS := --coverage -g -Wall -O3
 INC := -I include -I third-party
 
 
-MODULES = QC
+MODULES = generator QC
 SOURCES = $(addsuffix .cpp,$(MODULES))
 OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
 TESTS = $(addprefix test_,$(SOURCES))
@@ -51,14 +51,31 @@ $(TESTS): tests/test_%.o : tests/test_%.cpp
 
 comp: $(TGTDIR)
 	$(CC) $(INC) $(CFLAGS) $(OBJDIR) program/$(TARGET).cpp -o $(TGTDIR)
-	@bin/main.exe
-	$(RM) main.gcno
-	$(RM) main.gcda
+	#@bin/main.exe
+	#$(RM) main.gcno
+	#$(RM) main.gcda
 
 run:
 	@bin/main.exe
 	$(RM) main.gcno
 	$(RM) main.gcda
+
+test:
+	$(shell mkdir -p result)
+	number=1 ; while [[ $$number -le 25 ]] ; do\
+		$(shell bin/main.exe QC Ale 50000 -p > result/qc_ale_50.txt)\
+		#@bin/main.exe QC Ale 100000 -p > result/qc_ale_100.txt \
+		#@bin/main.exe QC Ale 150000 -p > result/qc_ale_150.txt \
+		#@bin/main.exe QC Ale 200000 -p > result/qc_ale_200.txt \
+		#@bin/main.exe QC Ale 250000 -p > result/qc_ale_250.txt \
+		#@bin/main.exe QC Ale 300000 -p > result/qc_ale_300.txt \
+		#@bin/main.exe QC Ale 350000 -p > result/qc_ale_350.txt \
+		#@bin/main.exe QC Ale 400000 -p > result/qc_ale_400.txt \
+		#@bin/main.exe QC Ale 450000 -p > result/qc_ale_450.txt \
+		#@bin/main.exe QC Ale 500000 -p > result/qc_ale_500.txt \
+		((number = number + 1)); \
+	done
+
 
 debug:
 	@gdb $(BIN)/main.exe
@@ -74,7 +91,7 @@ $(COVER): src/%.gcov : src/%.cpp
 	$(RM) *.gcda *.gcno
 
 clean:
-	$(RM) -r build/* coverage/* *.gcda *.gcno *.gcov *.exe *.o bin/*
+	$(RM) -r build/* coverage/* *.gcda *.gcno *.gcov *.exe *.o bin/* result/*
 
 .PHONY: clean coverage
 
