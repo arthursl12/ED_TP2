@@ -23,7 +23,7 @@ int* geraVetor(char* tipo, int tamanho){
         vetor = VetorAleatorio(tamanho);
     }else if(stringIgual(tipo,(char*)"OrdC")){
         vetor = VetorCrescente(tamanho);
-    }else{
+    }else{ /* OrdD */
         vetor = VetorDecrescente(tamanho);
     }
     return vetor;
@@ -31,7 +31,7 @@ int* geraVetor(char* tipo, int tamanho){
 
 void fazOrdenacao(char* variacao, int* vetor, int tamanho, int& n_comp, int& n_mov){
     if (stringIgual(variacao, (char*)"QC"))
-        QC(vetor, tamanho, n_comp, n_mov);
+        qc(vetor, tamanho, n_comp, n_mov);
     /*
     else if (stringIgual(variacao,"QM3")){}
     else if (stringIgual(variacao,"QPE")){}
@@ -47,7 +47,7 @@ int mediana(int* A, int n){
     int n_comp = 0;
     int n_mov = 0;
     int med;
-    QC(A, n, n_comp, n_mov);
+    qc(A, n, n_comp, n_mov);
 
     if (n % 2 == 0){
         med = A[n/2] + A[n/2 - 1];

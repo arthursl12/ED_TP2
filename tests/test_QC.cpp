@@ -4,20 +4,21 @@
 
 TEST_CASE("QC: IndicePivot"){
     int A[4] = {0, 1 ,2 ,3};
-    CHECK(IndicePivot(0, 3, A) == 1);
+    CHECK(QC::IndicePivot(0, 3, A) == 1);
     
     int B[1] = {4};
-    CHECK(IndicePivot(0, 0, B) == 0);
+    CHECK(QC::IndicePivot(0, 0, B) == 0);
 
     int C[3] = {5, 6, 7};
-    CHECK(IndicePivot(0, 2, C) == 1);
+    CHECK(QC::IndicePivot(0, 2, C) == 1);
 }
 
 TEST_CASE("QC: Particao"){
     SUBCASE("Pivô maior de todos"){
         int A[5] = {2, 1, 4, 3, 0};
         int i, j;
-        Particao(0, 4, i, j, A);
+        int n_comp, n_mov;
+        QC::Particao(0, 4, i, j, A, n_comp, n_mov);
 
         /* Resultados:
         Pivô = 4
@@ -38,7 +39,8 @@ TEST_CASE("QC: Particao"){
     SUBCASE("Pivô menor de todos"){
         int B[7] = {3, 6, 4, 1, 5, 7, 2};
         int i, j;
-        Particao(0, 6, i, j, B);
+        int n_comp, n_mov;
+        QC::Particao(0, 6, i, j, B, n_comp, n_mov);
 
         /* Resultados:
         Pivô = 1
@@ -61,7 +63,8 @@ TEST_CASE("QC: Particao"){
     SUBCASE("Pivô não está nas bordas"){
         int C[9] = {5, 7, 3, 1, 6, 8, 4, 2, 0};
         int i, j;
-        Particao(0, 8, i, j, C);
+        int n_comp, n_mov;
+        QC::Particao(0, 8, i, j, C, n_comp, n_mov);
         /* Resultados:
         Pivô: 6
         i = 6
@@ -87,7 +90,8 @@ TEST_CASE("QC: Particao"){
     SUBCASE("Pivô na posição correta"){
         int D[7] = {3, 6, 1, 4, 5, 7, 2};
         int i, j;
-        Particao(0, 6, i, j, D);
+        int n_comp, n_mov;
+        QC::Particao(0, 6, i, j, D, n_comp, n_mov);
         /* Resultados:
         Pivô: 4
         i = 4
@@ -109,7 +113,8 @@ TEST_CASE("QC: Particao"){
     SUBCASE("Caso genérico"){
         int E[7] = {3, 6, 4, 5, 1, 7, 2};
         int i, j;
-        Particao(0, 6, i, j, E);
+        int n_comp, n_mov;
+        QC::Particao(0, 6, i, j, E, n_comp, n_mov);
         /* Resultados:
         Pivô: 5
         i = 4
@@ -134,7 +139,8 @@ TEST_CASE("QC: Particao"){
 TEST_CASE("QC: Quicksort"){
     SUBCASE("Caso com várias especialidades"){
         int F[9] = {65, 77, 51, 25, 03, 84, 48, 21, 05};
-        QC(F, 9);
+        int n_mov, n_comp;
+        qc(F, 9, n_comp, n_mov);
         CHECK(F[0] == 3);
         CHECK(F[1] == 5);
         CHECK(F[2] == 21);
@@ -147,7 +153,8 @@ TEST_CASE("QC: Quicksort"){
     }
     SUBCASE("Caso simples"){
         int G[7] = {3, 6, 4, 5, 1, 7, 2};
-        QC(G, 7);
+        int n_mov, n_comp;
+        qc(G, 7, n_comp, n_mov);
         CHECK(G[0] == 1);
         CHECK(G[1] == 2);
         CHECK(G[2] == 3);
@@ -158,7 +165,8 @@ TEST_CASE("QC: Quicksort"){
     }
     SUBCASE("Vetor já ordenado"){
         int G[7] = {0, 1, 2, 3, 4, 5, 6};
-        QC(G, 7);
+        int n_mov, n_comp;
+        qc(G, 7, n_comp, n_mov);
         CHECK(G[0] == 0);
         CHECK(G[1] == 1);
         CHECK(G[2] == 2);
@@ -169,7 +177,8 @@ TEST_CASE("QC: Quicksort"){
     }
     SUBCASE("Vetor em ordem decrescente"){
         int G[6] = {6, 5, 4, 3, 2, 1};
-        QC(G, 6);
+        int n_mov, n_comp;
+        qc(G, 6, n_comp, n_mov);
         CHECK(G[0] == 1);
         CHECK(G[1] == 2);
         CHECK(G[2] == 3);
