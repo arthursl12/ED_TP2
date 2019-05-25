@@ -6,6 +6,7 @@
 #include "QC.h"
 #include "QM3.h"
 #include "QPE.h"
+#include "QI.h"
 #include "generator.h"
 
 #define N_TESTES 25
@@ -38,13 +39,15 @@ void fazOrdenacao(char* variacao, int* vetor, int tamanho, int& n_comp, int& n_m
         qm3(vetor, tamanho, n_comp, n_mov);
     else if (stringIgual(variacao,(char*)"QPE"))
         qpe(vetor, tamanho, n_comp, n_mov);
+    else if (stringIgual(variacao,(char*)"QI1"))
+        qi(vetor, tamanho, n_comp, n_mov, 0.01);
+    else if (stringIgual(variacao,(char*)"QI5"))
+        qi(vetor, tamanho, n_comp, n_mov, 0.05);
+    else if (stringIgual(variacao,(char*)"QI10"))
+        qi(vetor, tamanho, n_comp, n_mov, 0.1);
     /*
-    else if (stringIgual(variacao,"QI1")){}
-    else if (stringIgual(variacao,"QI5")){}
-    else if (stringIgual(variacao,"QI10")){}
     else if (stringIgual(variacao,"QM3")){}*/
     else{};
-    
 }
 
 int mediana(int* A, int n){
@@ -97,7 +100,6 @@ int main(int argc, char* argv[]){
     }
 
     /* Imprime os resultados */
-    
     printf("%s %s %i",variacao, tipo, tamanho);
     printf(" %i",mediana(n_comp_vec, N_TESTES));
     printf(" %i\n",mediana(n_mov_vec, N_TESTES));

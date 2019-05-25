@@ -11,7 +11,7 @@ T_CFLAGS := --coverage -g -Wall -O3
 INC := -I include -I third-party
 
 
-MODULES = generator QC QM3 QPE
+MODULES = generator QC QM3 QPE QI
 SOURCES = $(addsuffix .cpp,$(MODULES))
 OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
 TESTS = $(addprefix test_,$(SOURCES))
@@ -78,6 +78,9 @@ test:
 
 
 debug:
+	$(CC) $(INC) $(CFLAGS) $(OBJDIR) program/$(TARGET)_debug.cpp -o $(TGTDIR)_debug
+	
+gdb:
 	@gdb $(BIN)/main.exe
 
 coverage: $(COVER)

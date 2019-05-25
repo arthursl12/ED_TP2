@@ -5,11 +5,7 @@
 #include "generator.h"
 
 bool TamanhoValido(int tamanho){
-    if (tamanho % 50000 != 0)
-        return false;
-    if (tamanho < 50000)
-        return false;
-    if (tamanho > 500000)
+    if (tamanho <= 0)
         return false;
     return true;
 }

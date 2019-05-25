@@ -60,7 +60,6 @@ void QM3::Ordena(int Esq, int Dir, int* A, int& n_comp, int& n_mov){
     if (i < Dir) QM3::Ordena(i, Dir, A, n_comp, n_mov);
 }
 
-
 void qm3(int* A, int n, int& n_comp, int& n_mov){
     n_comp = 0;
     n_mov = 0;

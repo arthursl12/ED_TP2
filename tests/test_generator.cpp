@@ -8,18 +8,14 @@ TEST_CASE("Generator: TamanhoValido"){
     CHECK(TamanhoValido(50000) == true);
     CHECK(TamanhoValido(500000) == true);
     CHECK(TamanhoValido(350000) == true);
-    CHECK(TamanhoValido(352000) == false);
+    CHECK(TamanhoValido(352000) == true);
     CHECK(TamanhoValido(0) == false);
-    CHECK(TamanhoValido(12000) == false);
-    CHECK(TamanhoValido(504000) == false);
+    CHECK(TamanhoValido(12000) == true);
+    CHECK(TamanhoValido(504000) == true);
 }
 
 TEST_CASE("Generator: VetorAleatorio"){
     CHECK_THROWS_AS(VetorAleatorio(0), std::invalid_argument);
-    CHECK_THROWS_AS(VetorAleatorio(10000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorAleatorio(501000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorAleatorio(49000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorAleatorio(64000), std::invalid_argument);
 
     int* random = VetorAleatorio(50000);
     delete[] random;
@@ -30,10 +26,6 @@ TEST_CASE("Generator: VetorAleatorio"){
 
 TEST_CASE("Generator: VetorCrescente"){
     CHECK_THROWS_AS(VetorCrescente(0), std::invalid_argument);
-    CHECK_THROWS_AS(VetorCrescente(10000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorCrescente(501000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorCrescente(49000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorCrescente(64000), std::invalid_argument);
 
     int* A = VetorCrescente(50000);
     CHECK(A[0] <= A[1]);
@@ -52,10 +44,6 @@ TEST_CASE("Generator: VetorCrescente"){
 
 TEST_CASE("Generator: VetorDecrescente"){
     CHECK_THROWS_AS(VetorDecrescente(0), std::invalid_argument);
-    CHECK_THROWS_AS(VetorDecrescente(1000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorDecrescente(501000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorDecrescente(49000), std::invalid_argument);
-    CHECK_THROWS_AS(VetorDecrescente(64000), std::invalid_argument);
 
     int* A = VetorDecrescente(50000);
     CHECK(A[0] >= A[1]);

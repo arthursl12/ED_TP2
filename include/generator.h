@@ -1,7 +1,7 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-/* Verifica se o 50000 <= tamanho <= 500000 e tamanho%50000 == 0 */
+/* Verifica se o tamanho > 0 */
 bool TamanhoValido(int tamanho);
 
 /* Retorna um vetor aleatório com tamanho elementos */
