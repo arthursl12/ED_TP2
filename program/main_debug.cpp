@@ -1,10 +1,22 @@
 #include <iostream>
-#include "QI.h"
+#include "Pilha.h"
+
 
 int main(){
-    int C[6] = {6, 5, 4, 3, 2, 1};
-    int n_comp, n_mov;
-    QI::Insertion(C, 0, 5, n_comp, n_mov);
+    Pilha P = Pilha();
+    int* C = new int[20];
+    for (int i = 0; i < 20; i++) C[i] = i;
+    int* D = new int[2];
+    for (int i = 6; i > 4; i--) D[i] = i;
+    P.Adiciona(&C);
+    P.Adiciona(&D);
+
+    int* E = P.Retira();
+
+    int* F = P.Retira();
+
+    delete[] C;
+    delete[] D;
 
     return 0;
 }
