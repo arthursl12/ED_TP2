@@ -4,19 +4,15 @@
 typedef struct Celula_str *Apontador;
 
 typedef struct TipoItem{
-    int* Esq;
-    int* Dir;
-    ~TipoItem(){
-        if (Esq != nullptr) delete Esq;
-        if (Dir != nullptr) delete Dir;
-    }
+    int Esq;
+    int Dir;
 } Item;
 
 typedef struct Celula_str{
     Item* item;
     Apontador prox;
 
-    Celula_str(int* esq, int* dir){
+    Celula_str(int esq, int dir){
         item = new TipoItem();
         item->Esq = esq; 
         item->Dir = dir;
@@ -32,8 +28,8 @@ class Pilha{
 public:
     Pilha();
     ~Pilha();
-    void Empilha(int* Esq, int* Dir);
-    void  Desempilha(int& x, int& y);
+    void Empilha(int Esq, int Dir);
+    void Desempilha(int& x, int& y);
     bool Vazia();
 private:
     Apontador Topo;

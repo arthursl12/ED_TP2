@@ -14,7 +14,7 @@ Pilha::~Pilha(){
     }
 }
 
-void Pilha::Empilha(int* Esq, int* Dir){
+void Pilha::Empilha(int Esq, int Dir){
     Apontador novo = new Celula(Esq, Dir);
 
     if (Vazia()){
@@ -42,11 +42,13 @@ void Pilha::Desempilha(int& x, int& y){
         Fundo = nullptr;
     }
 
-    x = *retira->item->Esq;
-    y = *retira->item->Dir;
-    retira->item = nullptr;
-    retira->prox = nullptr;
-    delete(retira);
+    if (retira->item != nullptr){
+        x = retira->item->Esq;
+        y = retira->item->Dir;
+        retira->item = nullptr;
+        retira->prox = nullptr;
+        delete(retira);
+    }
 }
 bool Pilha::Vazia(){
     return (n_elementos == 0 && Topo == nullptr && Fundo == nullptr);

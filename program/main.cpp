@@ -2,11 +2,13 @@
 #include <cstring>
 #include <cstdio>
 #include <chrono>
+#include <cmath>
 
 #include "QC.h"
 #include "QM3.h"
 #include "QPE.h"
 #include "QI.h"
+#include "QNR.h"
 #include "generator.h"
 
 #define N_TESTES 25
@@ -45,9 +47,8 @@ void fazOrdenacao(char* variacao, int* vetor, int tamanho, int& n_comp, int& n_m
         qi(vetor, tamanho, n_comp, n_mov, 0.05);
     else if (stringIgual(variacao,(char*)"QI10"))
         qi(vetor, tamanho, n_comp, n_mov, 0.1);
-    /*
-    else if (stringIgual(variacao,"QM3")){}*/
-    else{};
+    else
+        qnr(vetor, tamanho, n_comp, n_mov);
 }
 
 int mediana(int* A, int n){
@@ -78,18 +79,19 @@ int main(int argc, char* argv[]){
     /* Bases da análise estatística */
     int* conj_vectors[N_TESTES];
     std::chrono::duration<double> tempos[N_TESTES];
+    int tempos_int[N_TESTES];
     int n_comp_vec[N_TESTES];
     int n_mov_vec[N_TESTES];
 
     /* Executa os testes */
     for (int i = 0; i < N_TESTES; i++){
-        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
         int n_comp, n_mov;
-
         int* vetor = geraVetor(tipo, tamanho);
+
+        std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
+        
         fazOrdenacao(variacao, vetor, tamanho, n_comp, n_mov);
         
-
         std::chrono::high_resolution_clock::time_point t2 = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double, std::micro> elapsed_time = std::chrono::duration_cast<std::chrono::duration<double>>(t2 - t1);
         
@@ -102,7 +104,15 @@ int main(int argc, char* argv[]){
     /* Imprime os resultados */
     printf("%s %s %i",variacao, tipo, tamanho);
     printf(" %i",mediana(n_comp_vec, N_TESTES));
-    printf(" %i\n",mediana(n_mov_vec, N_TESTES));
+    printf(" %i",mediana(n_mov_vec, N_TESTES));
+
+    for (int i = 0; i < N_TESTES; i++){
+        double x = tempos[i].count();
+        x = x*pow(10,6);
+        int y = (int) x;
+        tempos_int[i] = y;
+    }
+    printf(" %i\n",mediana(tempos_int, N_TESTES));
         
     if (imprimir == true){
         for (int j = 0; j < N_TESTES; j++){
@@ -112,12 +122,9 @@ int main(int argc, char* argv[]){
         }
     }
 
-
     for (int j = 0; j < N_TESTES; j++){
         delete[] conj_vectors[j];
     }
-
-    
 
     return 0;
 }
