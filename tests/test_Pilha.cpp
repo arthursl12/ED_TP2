@@ -11,45 +11,48 @@ TEST_CASE("Pilha: Vazia"){
     CHECK(P.Vazia() == true);
 }
 
-TEST_CASE("Pilha: Adiciona e Retira"){
-    int* A = new int[5];
-    for (int i = 0; i < 5; i++) A[i] = i;
+TEST_CASE("Pilha: Empilha e Retira"){
+    int* a = new int(5);
+    int* b = new int(0);
     Pilha P = Pilha();
-    P.Adiciona(A);
+    P.Empilha(a, b);
     CHECK(P.Vazia() == false);
 
-    int* B = P.Retira();
-    CHECK(B[0] == A[0]);
-    CHECK(B[1] == A[1]);
-    CHECK(B[2] == A[2]);
-    CHECK(B[3] == A[3]);
-    CHECK(B[4] == A[4]);
+    int* c = new int(2);
+    int* d = new int(3);
+    P.Empilha(c, d);
+    CHECK(P.Vazia() == false);
+
+    
+    int x;
+    int y;
+    P.Desempilha(x, y);
+    CHECK(x == 2);
+    CHECK(y == 3);
+    CHECK(P.Vazia() == false);
+    
+    P.Desempilha(x, y);
+    CHECK(x == 5);
+    CHECK(y == 0);
     CHECK(P.Vazia() == true);
 
-    delete[] A;
+    delete a;
+    delete b;
+    delete c;
+    delete d;
+    
+}
 
-    A = new int[6];
-    for (int i = 0; i < 6; i++) A[i] = i;
-    B = new int[2];
-    for (int i = 6; i > 4; i--) B[i] = i;
-    P.Adiciona(A);
-    P.Adiciona(B);
-    CHECK(P.Vazia() == false);
+TEST_CASE("Pilha: Desempilha maior e destrutor"){
+    int* a = new int(5);
+    int* b = new int(6);
+    int* c = new int(7);
+    int* d = new int(8);
+    int* e = new int(0);
+    int* f = new int(10);
 
-    int* C = P.Retira();
-    CHECK(B[0] == C[0]);
-    CHECK(B[1] == C[1]);
-    CHECK(P.Vazia() == false);
-
-    int* D = P.Retira();
-    CHECK(D[0] == A[0]);
-    CHECK(D[1] == A[1]);
-    CHECK(D[2] == A[2]);
-    CHECK(D[3] == A[3]);
-    CHECK(D[4] == A[4]);
-    CHECK(D[4] == A[4]);
-    CHECK(P.Vazia() == false);
-
-    delete[] A;
-    delete[] B;
+    Pilha P = Pilha();
+    P.Empilha(a, b);
+    P.Empilha(c, d);
+    P.Empilha(e, f);
 }

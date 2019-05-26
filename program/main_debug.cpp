@@ -3,20 +3,24 @@
 
 
 int main(){
+    int* a = new int(5);
+    int* b = new int(0);
     Pilha P = Pilha();
-    int* C = new int[20];
-    for (int i = 0; i < 20; i++) C[i] = i;
-    int* D = new int[2];
-    for (int i = 6; i > 4; i--) D[i] = i;
-    P.Adiciona(&C);
-    P.Adiciona(&D);
+    P.Empilha(a, b);
 
-    int* E = P.Retira();
+    int* c = new int(2);
+    int* d = new int(3);
+    P.Empilha(c, d);
 
-    int* F = P.Retira();
+    int* x;
+    int* y;
+    P.Desempilha(x, y);
 
-    delete[] C;
-    delete[] D;
+    P.Desempilha(x, y);
 
+    delete a;
+    delete b;
+    delete c;
+    delete d;
     return 0;
 }

@@ -1,20 +1,39 @@
 #ifndef PILHA_H
 #define PILHA_H
 
-#include <memory>
-
 typedef struct Celula_str *Apontador;
 
+typedef struct TipoItem{
+    int* Esq;
+    int* Dir;
+    ~TipoItem(){
+        if (Esq != nullptr) delete Esq;
+        if (Dir != nullptr) delete Dir;
+    }
+} Item;
+
 typedef struct Celula_str{
-    int** item;
+    Item* item;
     Apontador prox;
+
+    Celula_str(int* esq, int* dir){
+        item = new TipoItem();
+        item->Esq = esq; 
+        item->Dir = dir;
+        prox = nullptr;
+    }
+    ~Celula_str(){
+        if (item != nullptr) delete item;
+        prox = nullptr;
+    }
 } Celula;
 
 class Pilha{
 public:
     Pilha();
-    void Adiciona(int** A);
-    int* Retira();
+    ~Pilha();
+    void Empilha(int* Esq, int* Dir);
+    void  Desempilha(int& x, int& y);
     bool Vazia();
 private:
     Apontador Topo;

@@ -6,10 +6,16 @@ Pilha::Pilha(){
     this->Fundo = nullptr;
 }
 
-void Pilha::Adiciona(int** A){
-    Apontador novo = new Celula;
-    novo->item = A;
-    novo->prox = nullptr;
+Pilha::~Pilha(){
+    while(!Vazia()){
+        int x;
+        int y;
+        Desempilha(x, y);
+    }
+}
+
+void Pilha::Empilha(int* Esq, int* Dir){
+    Apontador novo = new Celula(Esq, Dir);
 
     if (Vazia()){
         Fundo = novo;
@@ -21,7 +27,7 @@ void Pilha::Adiciona(int** A){
     n_elementos++;
 }
 
-int* Pilha::Retira(){
+void Pilha::Desempilha(int& x, int& y){
     Apontador retira = Topo;
     Apontador atual = Fundo;
     for (int i = 1; i < n_elementos-1; i++){
@@ -36,11 +42,11 @@ int* Pilha::Retira(){
         Fundo = nullptr;
     }
 
-    int** item = retira->item;
+    x = *retira->item->Esq;
+    y = *retira->item->Dir;
     retira->item = nullptr;
     retira->prox = nullptr;
-    free(retira);
-    return *item;
+    delete(retira);
 }
 bool Pilha::Vazia(){
     return (n_elementos == 0 && Topo == nullptr && Fundo == nullptr);
