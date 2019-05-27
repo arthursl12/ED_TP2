@@ -60,29 +60,9 @@ run:
 	$(RM) main.gcno
 	$(RM) main.gcda
 
-test:
-	$(shell mkdir -p result)
-	number=1 ; while [[ $$number -le 25 ]] ; do\
-		$(shell bin/main.exe QC Ale 50000 -p > result/qc_ale_50.txt)\
-		#@bin/main.exe QC Ale 100000 -p > result/qc_ale_100.txt \
-		#@bin/main.exe QC Ale 150000 -p > result/qc_ale_150.txt \
-		#@bin/main.exe QC Ale 200000 -p > result/qc_ale_200.txt \
-		#@bin/main.exe QC Ale 250000 -p > result/qc_ale_250.txt \
-		#@bin/main.exe QC Ale 300000 -p > result/qc_ale_300.txt \
-		#@bin/main.exe QC Ale 350000 -p > result/qc_ale_350.txt \
-		#@bin/main.exe QC Ale 400000 -p > result/qc_ale_400.txt \
-		#@bin/main.exe QC Ale 450000 -p > result/qc_ale_450.txt \
-		#@bin/main.exe QC Ale 500000 -p > result/qc_ale_500.txt \
-		((number = number + 1)); \
-	done
-
-
 debug:
 	$(CC) $(INC) $(CFLAGS) $(OBJDIR) program/$(TARGET)_debug.cpp -o $(TGTDIR)_debug
 	
-gdb:
-	@gdb $(BIN)/main.exe
-
 coverage: $(COVER)
 $(COVER): src/%.gcov : src/%.cpp
 	@echo ""

@@ -31,16 +31,19 @@ void QM3::Particao(int Esq, int Dir, int& i, int& j, int* A, int& n_comp, int& n
     i = Esq;
     j = Dir;
     int Pivot = QM3::Pivot(Esq, Dir, A);
+    n_comp = n_comp+3;
     
     do{
         while (A[i] < Pivot){
             n_comp++;
             i++;
         }
+        n_comp++;
         while (A[j] > Pivot){
             n_comp++;
             j--;
         }
+        n_comp++;
         if (i <= j){
             int temp = A[i]; A[i] = A[j]; A[j] = temp;
             n_mov++;

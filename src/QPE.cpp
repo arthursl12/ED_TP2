@@ -10,10 +10,12 @@ void QPE::Particao(int Esq, int Dir, int& i, int& j, int* A, int& n_comp, int& n
             n_comp++;
             i++;
         }
+        n_comp++;
         while (A[j] > Pivot){
             n_comp++;
             j--;
         }
+        n_comp++;
         if (i <= j){
             int temp = A[i]; A[i] = A[j]; A[j] = temp;
             n_mov++;
