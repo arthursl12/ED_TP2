@@ -1,7 +1,8 @@
-declare -a var=("QI10" "QPE")
-declare -a vec=("OrdC" "OrdD")
+declare -a var=("QPE")
+declare -a vec=("OrdD")
 declare -a tam=("50000" "100000" "150000" 
-                  "200000" "250000" "300000" 
+                "200000" "250000" "300000" 
+                "350000" "400000" "500000"
                 )
 
 for i in "${var[@]}"
