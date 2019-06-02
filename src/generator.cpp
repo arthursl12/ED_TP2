@@ -10,15 +10,16 @@ bool TamanhoValido(int tamanho){
     return true;
 }
 
-int* VetorAleatorio(int tamanho){
+int* VetorAleatorio(int tamanho, int seed){
     if(!TamanhoValido(tamanho))
         throw std::invalid_argument("Tamanho inválido");
 
     int tam = tamanho;
+    srand(seed);
     int* vec = new int[tam];
     for (int i = 0; i < tam; i++){
-        srand(time(NULL));
         vec[i] = rand();
+        
     }
     return vec;
 }

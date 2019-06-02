@@ -15,12 +15,12 @@ TEST_CASE("Generator: TamanhoValido"){
 }
 
 TEST_CASE("Generator: VetorAleatorio"){
-    CHECK_THROWS_AS(VetorAleatorio(0), std::invalid_argument);
+    CHECK_THROWS_AS(VetorAleatorio(0,12), std::invalid_argument);
 
-    int* random = VetorAleatorio(50000);
+    int* random = VetorAleatorio(50000,12);
     delete[] random;
 
-    random = VetorAleatorio(500000);
+    random = VetorAleatorio(500000,12);
     delete[] random;
 }
 

@@ -21,11 +21,11 @@ bool stringIgual(char* str1, char* str2){
         return false;
 }
 
-int* geraVetor(char* tipo, int tamanho){
+int* geraVetor(char* tipo, int tamanho, int seed){
     int* vetor;
 
     if (stringIgual(tipo,(char*)"Ale")){
-        vetor = VetorAleatorio(tamanho);
+        vetor = VetorAleatorio(tamanho, seed);
     }else if(stringIgual(tipo,(char*)"OrdC")){
         vetor = VetorCrescente(tamanho);
     }else{ /* OrdD */
@@ -84,9 +84,10 @@ int main(int argc, char* argv[]){
     int n_mov_vec[N_TESTES];
 
     /* Executa os testes */
+    int seed = time(NULL);
     for (int i = 0; i < N_TESTES; i++){
         int n_comp, n_mov;
-        int* vetor = geraVetor(tipo, tamanho);
+        int* vetor = geraVetor(tipo, tamanho, seed++);
 
         std::chrono::high_resolution_clock::time_point t1 = std::chrono::high_resolution_clock::now();
         

@@ -66,7 +66,7 @@ TEST_CASE("QI: Quicksort com inserção"){
     CHECK(B[8] == 8);
     CHECK(B[9] == 9);
 
-    int* C = VetorAleatorio(3000);
+    int* C = VetorAleatorio(3000,12);
     qi(C, 3000, n_comp, n_mov, 0.1);
     CHECK(C[0] <= C[1]);
     for (int i = 0; i < 3000; i++){
@@ -74,7 +74,7 @@ TEST_CASE("QI: Quicksort com inserção"){
     }
     delete[] C;
 
-    C = VetorAleatorio(40000);
+    C = VetorAleatorio(40000,13);
     qi(C, 40000, n_comp, n_mov, 0.01);
     CHECK(C[0] <= C[1]);
     for (int i = 0; i < 40000; i++){
@@ -82,7 +82,7 @@ TEST_CASE("QI: Quicksort com inserção"){
     }
     delete[] C;
 
-    C = VetorAleatorio(40000);
+    C = VetorAleatorio(40000,15);
     qi(C, 40000, n_comp, n_mov, 0.05);
     CHECK(C[0] <= C[1]);
     for (int i = 0; i < 40000; i++){

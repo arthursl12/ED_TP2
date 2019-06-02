@@ -5,7 +5,7 @@
 bool TamanhoValido(int tamanho);
 
 /* Retorna um vetor aleatório com tamanho elementos */
-int* VetorAleatorio(int tamanho);
+int* VetorAleatorio(int tamanho, int seed);
 /* Retorna um vetor em ordem crescente com tamanho elementos */
 int* VetorCrescente(int tamanho);
 /* Retorna um vetor em ordem decrescente com tamanho elementos */
