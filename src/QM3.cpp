@@ -27,6 +27,7 @@ int QM3::Pivot(int Esq, int Dir, int* A){
     return mediana_tres(A_0, A_n, A_m);
 }
 
+/* Código implementado com base no apresentado no slide em aula */
 void QM3::Particao(int Esq, int Dir, int& i, int& j, int* A, int& n_comp, int& n_mov){
     i = Esq;
     j = Dir;
@@ -54,6 +55,7 @@ void QM3::Particao(int Esq, int Dir, int& i, int& j, int* A, int& n_comp, int& n
     }while (i <= j); 
 }
 
+/* Código implementado com base no apresentado no slide em aula */
 void QM3::Ordena(int Esq, int Dir, int* A, int& n_comp, int& n_mov){
     int i; 
     int j;
@@ -63,6 +65,7 @@ void QM3::Ordena(int Esq, int Dir, int* A, int& n_comp, int& n_mov){
     if (i < Dir) QM3::Ordena(i, Dir, A, n_comp, n_mov);
 }
 
+/* Código implementado com base no apresentado no slide em aula */
 void qm3(int* A, int n, int& n_comp, int& n_mov){
     n_comp = 0;
     n_mov = 0;

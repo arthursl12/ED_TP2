@@ -2,6 +2,7 @@
 #include "QC.h"
 #include "Pilha.h"
 
+/* Código implementado com base no apresentado no slide em aula */
 void qnr(int* A, int n, int& n_comp, int& n_mov){
     Pilha P;
     int dir = n-1;

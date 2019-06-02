@@ -2,6 +2,7 @@
 #include "QM3.h"
 #include <iostream>
 
+/* Código implementado com base no apresentado no slide em aula */
 void QI::Insertion(int* A, int Esq, int Dir, int& n_comp, int& n_mov){
     for(int i = Esq+1; i <= Dir; i++){
         for(int j = Esq; j < i; j++){
@@ -16,6 +17,7 @@ void QI::Insertion(int* A, int Esq, int Dir, int& n_comp, int& n_mov){
     }
 }
 
+/* Código implementado com base no apresentado no slide em aula */
 void QI::Ordena(int Esq, int Dir, int* A, int& n_comp, int& n_mov, int n, double perc){
     int i; 
     int j;
@@ -30,7 +32,7 @@ void QI::Ordena(int Esq, int Dir, int* A, int& n_comp, int& n_mov, int n, double
     
 }
 
-
+/* Código implementado com base no apresentado no slide em aula */
 void qi(int* A, int n, int& n_comp, int& n_mov, double perc){
     n_comp = 0;
     n_mov = 0;

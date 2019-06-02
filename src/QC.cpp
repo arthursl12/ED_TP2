@@ -5,6 +5,7 @@ int QC::IndicePivot(int Esq, int Dir, int* A){
     return (Esq + Dir)/2;
 }
 
+/* Código implementado com base no apresentado no slide em aula */
 void QC::Particao(int Esq, int Dir, int& i, int& j, int* A, int& n_comp, int& n_mov){
     i = Esq;
     j = Dir;
@@ -32,6 +33,7 @@ void QC::Particao(int Esq, int Dir, int& i, int& j, int* A, int& n_comp, int& n_
     }while (i <= j); 
 }
 
+/* Código implementado com base no apresentado no slide em aula */
 void QC::Ordena(int Esq, int Dir, int* A, int& n_comp, int& n_mov){
     int i; 
     int j;
@@ -41,6 +43,7 @@ void QC::Ordena(int Esq, int Dir, int* A, int& n_comp, int& n_mov){
     if (i < Dir) QC::Ordena(i, Dir, A, n_comp, n_mov);
 }
 
+/* Código implementado com base no apresentado no slide em aula */
 void qc(int* A, int n, int& n_comp, int& n_mov){
     n_comp = 0;
     n_mov = 0;
