@@ -67,6 +67,15 @@ int mediana(int* A, int n){
     return med;
 }
 
+int media(int* A, int n){
+    long int soma = 0;
+    for (int i = 0; i < n; i++){
+        soma += A[i];
+    }
+    int media = soma/n;
+    return media;
+}
+
 int main(int argc, char* argv[]){
     /* Coleta os argumentos */
     char* variacao = argv[1];
@@ -104,8 +113,8 @@ int main(int argc, char* argv[]){
 
     /* Imprime os resultados */
     printf("%s %s %i",variacao, tipo, tamanho);
-    printf(" %i",mediana(n_comp_vec, N_TESTES));
-    printf(" %i",mediana(n_mov_vec, N_TESTES));
+    printf(" %i",media(n_comp_vec, N_TESTES));
+    printf(" %i",media(n_mov_vec, N_TESTES));
 
     for (int i = 0; i < N_TESTES; i++){
         double x = tempos[i].count();
